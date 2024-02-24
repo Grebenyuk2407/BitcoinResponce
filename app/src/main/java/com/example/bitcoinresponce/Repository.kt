@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.create
 
 
-class Repository(val apiClient: ApiClient) {
+class Repository(private val apiClient: ApiClient) {
         suspend fun getCurrencyByName(name:String): Response<BitcoinResponse> {
             val apiInterface = apiClient.client?.create(ApiInterface::class.java)
             return apiInterface!!.getCryptoByName(name)
