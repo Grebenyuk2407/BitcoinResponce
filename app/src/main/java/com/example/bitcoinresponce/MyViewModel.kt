@@ -7,17 +7,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MyViewModel : ViewModel() {
+class MyViewModel @Inject constructor(val repo:Repository) : ViewModel() {
     private val _uiState = MutableLiveData<UIState>(UIState.Empty)
     val uiState: LiveData<UIState> = _uiState
-    var repo = MyApplication.getApp().repo
+
     fun getData() {
         _uiState.value = UIState.Processing
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 try {
-                    val bitcoin = repo.getCurrencyByName("ethereum")
+                    val bitcoin = repo.getCurrencyByName("bitcoin")
                     if (bitcoin.isSuccessful) {
                         val data = bitcoin.body()?.data
                         _uiState.postValue(UIState.Result("${data?.id} ${data?.rateUsd}"))
