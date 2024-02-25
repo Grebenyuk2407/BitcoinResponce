@@ -2,8 +2,6 @@ package com.example.bitcoinresponce
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.bitcoinresponce.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
