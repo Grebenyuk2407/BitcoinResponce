@@ -94,32 +94,3 @@ class MainActivityTest {
     }
 
 }
-
-
-
-
-
-/**@SuppressLint("RestrictedApi")
-@RunWith(MockitoJUnitRunner::class)
-class MainActivityTest {
-
-    @get:Rule
-    val activityRule = ActivityScenarioRule(MainActivity::class.java)
-
-    @Test
-    fun testButtonClick() {
-        val viewModelMock = mock(MyViewModel::class.java)
-
-        activityRule.scenario.onActivity { activity ->
-            activity.viewModel = viewModelMock
-        }
-
-        onView(withId(R.id.button)).perform(click())
-
-        activityRule.scenario.onActivity { activity ->
-            activity.runOnUiThread {
-                verify(viewModelMock).getData()
-            }
-        }
-    }
-}*/
